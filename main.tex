@@ -1,0 +1,72 @@
+\documentclass[12pt]{report}
+\usepackage{geometry}
+\geometry{
+  letterpaper, % specify paper size as letter (8.5 x 11 inches)
+  left=1.25in, % left margin
+  right=1.25in, % right margin
+  top=1in, % top margin
+  bottom=1in, % bottom margin
+}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}[Scale=1.0]
+\usepackage{titlesec}
+\usepackage{glossaries} % For glossaries and acronyms
+\makeglossaries
+\loadglsentries{Acronyms}
+\usepackage{lipsum} 
+\usepackage{setspace}
+\onehalfspacing
+% Customizing font sizes for chapters and sections
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{20}{24}\selectfont\bfseries}{\chaptertitlename\ \thechapter}{20pt}{}
+\titleformat{\section}
+  {\normalfont\fontsize{16}{19.2}\selectfont\bfseries}{\thesection}{1em}{}
+
+\begin{document}
+\input{chapters/CoverPage}
+
+\pagenumbering{roman} % Start with Roman numerals
+
+\input{chapters/Abstract} % Include abstract.tex
+\addcontentsline{toc}{chapter}{Abstract}
+\clearpage
+
+\input{chapters/Acknowledgement} % Include acknowledgments.tex
+\addcontentsline{toc}{chapter}{Acknowledgment}
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\clearpage
+
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\clearpage
+
+\printglossary[type=\acronymtype,title={List of Acronyms}]
+\addcontentsline{toc}{chapter}{List of Acronyms}
+\clearpage
+\pagenumbering{arabic}
+
+
+\input{chapters/Chapter-Introduction}
+\input{chapters/Literature Review} 
+\clearpage
+
+
+
+
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{References}
+\bibliographystyle{agsm} % Choose a bibliography style
+\bibliography{References} % Specify the bibliography file
+\clearpage
+\appendix
+\chapter{Appendix}
+
+\end{document}
